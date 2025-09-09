@@ -6,26 +6,57 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --blossom-50: #fdf2f8;
+    --blossom-100: #fce7f3;
+    --blossom-200: #fbcfe8;
+    --blossom-300: #f9a8d4;
+    --blossom-400: #f472b6;
+    --blossom-500: #ec4899;
+    --blossom-600: #db2777;
+    --blossom-700: #be185d;
+    --blossom-800: #9d174d;
+    --blossom-900: #831843;
+    --rose-50: #fff1f2;
+    --rose-100: #ffe4e6;
+    --rose-200: #fecdd3;
+    --rose-300: #fda4af;
+    --rose-400: #fb7185;
+    --rose-500: #f43f5e;
+    --rose-600: #e11d48;
+    --rose-700: #be123c;
+    --rose-800: #9f1239;
+    --rose-900: #881337;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply text-slate-900 bg-white;
+    @apply text-gray-800 bg-gradient-to-br from-rose-50 to-blossom-50;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors;
+    @apply bg-gradient-to-r from-blossom-500 to-rose-500 text-white px-6 py-3 rounded-xl hover:from-blossom-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
   }
 
   .btn-secondary {
-    @apply bg-slate-200 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-300 transition-colors;
+    @apply bg-white text-blossom-600 px-6 py-3 rounded-xl border-2 border-blossom-200 hover:border-blossom-300 hover:bg-blossom-50 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md;
   }
 
   .card {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm;
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl border border-blossom-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02];
+  }
+
+  .pink-glow {
+    @apply shadow-lg shadow-blossom-500/20;
+  }
+
+  .pink-gradient-text {
+    @apply bg-gradient-to-r from-blossom-600 to-rose-600 bg-clip-text text-transparent;
   }
 }
 

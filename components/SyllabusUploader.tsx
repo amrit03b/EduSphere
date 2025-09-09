@@ -117,11 +117,11 @@ export default function SyllabusUploader({ onSyllabusUploaded }: SyllabusUploade
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6">
+    <div className="bg-white rounded-xl border border-blossom-200 p-6">
       <div className="flex items-center space-x-2 mb-6">
-        <Upload className="h-5 w-5 text-blue-600" />
-        <h2 className="text-xl font-semibold text-slate-800">Upload Your Syllabus</h2>
-      </div>
+          <Upload className="h-5 w-5 text-blossom-600" />
+          <h2 className="text-xl font-semibold text-gray-800">Upload Your Syllabus</h2>
+        </div>
       
       <div className="space-y-4">
         {/* File Upload - Commented out for now */}
@@ -141,7 +141,7 @@ export default function SyllabusUploader({ onSyllabusUploaded }: SyllabusUploade
 
         {/* Text Input */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter Syllabus Text
           </label>
           <textarea
@@ -149,7 +149,7 @@ export default function SyllabusUploader({ onSyllabusUploaded }: SyllabusUploade
             onChange={handleTextChange}
             placeholder="Enter your syllabus content here..."
             rows={6}
-            className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+            className="w-full px-3 py-2 border border-blossom-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blossom-500 focus:border-transparent resize-none"
           />
         </div>
 
@@ -157,7 +157,7 @@ export default function SyllabusUploader({ onSyllabusUploaded }: SyllabusUploade
         <button
           onClick={handleUploadSyllabus}
           disabled={!syllabusText.trim() || uploading}
-          className="w-full py-3 px-4 rounded-lg font-semibold transition-colors bg-blue-600 text-white hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 flex items-center justify-center space-x-2"
+          className="w-full py-3 px-4 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blossom-500 to-rose-500 text-white hover:from-blossom-600 hover:to-rose-600 disabled:bg-gray-200 disabled:text-gray-400 flex items-center justify-center space-x-2 hover:scale-105 transform"
         >
           {uploading ? (
             <>
@@ -174,19 +174,19 @@ export default function SyllabusUploader({ onSyllabusUploaded }: SyllabusUploade
 
         {/* Status Messages */}
         {uploadError && (
-          <div className="flex items-center space-x-2 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <AlertCircle className="h-4 w-4 text-red-600" />
-            <span className="text-red-600">{uploadError}</span>
+          <div className="flex items-center space-x-2 p-3 bg-rose-50 border border-rose-200 rounded-lg">
+            <AlertCircle className="h-4 w-4 text-rose-600" />
+            <span className="text-rose-600">{uploadError}</span>
           </div>
         )}
         
         {uploadSuccess && (
-          <div className="flex items-center space-x-2 p-3 bg-green-50 border border-green-200 rounded-lg">
-            <CheckCircle className="h-4 w-4 text-green-600" />
-            <span className="text-green-600">{uploadSuccess}</span>
+          <div className="flex items-center space-x-2 p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+            <CheckCircle className="h-4 w-4 text-emerald-600" />
+            <span className="text-emerald-600">{uploadSuccess}</span>
           </div>
         )}
       </div>
     </div>
   );
-} 
+}

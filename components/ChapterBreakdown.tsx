@@ -364,19 +364,17 @@ const ChapterBreakdown: React.FC<ChapterBreakdownProps> = ({ syllabusContent, ch
   }, []);
 
   if (loading) {
-    return (
-      <div className="space-y-4">
-        <div className="animate-pulse">
-          <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
-          <div className="h-4 bg-slate-200 rounded w-1/2"></div>
+      return (
+        <div className="flex justify-center items-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-600"></div>
+          <span className="ml-3 text-gray-600">Generating chapters...</span>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
   if (error) {
     return (
-      <div className="text-red-600 bg-red-50 p-4 rounded-lg">
+      <div className="text-rose-600 bg-rose-50 p-4 rounded-lg">
         <p>Error: {error}</p>
         <p className="text-sm mt-2">Using basic chapter breakdown...</p>
       </div>
@@ -461,9 +459,10 @@ const ChapterBreakdown: React.FC<ChapterBreakdownProps> = ({ syllabusContent, ch
                 ) : (
                   <ChevronRight className="h-5 w-5 text-slate-400" />
                 )}
-                <div>
-                  <h4 className="text-2xl font-bold text-slate-800">{chapter.title}</h4>
+                <div className="w-8 h-8 bg-gradient-to-r from-blossom-500 to-rose-500 rounded-lg flex items-center justify-center shadow">
+                  <BookOpen className="w-4 h-4 text-white" />
                 </div>
+                <h4 className="text-2xl font-bold text-gray-900">{chapter.title}</h4>
               </div>
             </button>
             {expandedChapters.has(chapter.id) && (
@@ -496,7 +495,7 @@ const ChapterBreakdown: React.FC<ChapterBreakdownProps> = ({ syllabusContent, ch
                           <div className="flex items-center justify-between">
                             <span>{q.question}</span>
                             <button
-                              className="ml-4 text-blue-600 hover:underline flex items-center"
+                              className="ml-4 text-blossom-600 hover:text-blossom-800 hover:underline flex items-center transition-colors"
                               onClick={() => handleToggleAnswer(chapter.id, idx)}
                             >
                               {showAnswers[chapter.id]?.[idx] ? <><EyeOff className="h-4 w-4 mr-1" />Hide Answer</> : <><Eye className="h-4 w-4 mr-1" />Show Answer</>}
@@ -614,6 +613,13 @@ const ChapterBreakdown: React.FC<ChapterBreakdownProps> = ({ syllabusContent, ch
                             </button>
                           )}
                           <button
+                            onClick={() => regenerateQuiz(chapter)}
+                            disabled={quizLoading[chapter.id]}
+                            className="px-4 py-2 bg-gradient-to-r from-blossom-500 to-rose-500 text-white rounded-lg hover:from-blossom-600 hover:to-rose-600 transition-all duration-300 text-sm transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            {quizLoading[chapter.id] ? 'Generating...' : 'Generate Quiz'}
+                          </button>
+                          <button
                             onClick={() => resetQuiz(chapter.id)}
                             className="bg-slate-300 text-slate-700 px-6 py-2 rounded-lg hover:bg-slate-400 transition-colors"
                           >
@@ -644,4 +650,4 @@ const ChapterBreakdown: React.FC<ChapterBreakdownProps> = ({ syllabusContent, ch
   );
 };
 
-export default ChapterBreakdown; 
+export default ChapterBreakdown;

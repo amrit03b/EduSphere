@@ -29,35 +29,37 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-blossom-50 to-pink-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center logo-animation">
+            <div className="w-8 h-8 bg-gradient-to-r from-blossom-500 to-rose-500 rounded-lg flex items-center justify-center logo-animation pink-glow">
               <BookOpen className="w-5 h-5 text-white" />
             </div>
-            <span className="text-2xl font-bold text-slate-800 brand-text-animation">EduSphere</span>
+            <span className="text-2xl font-bold text-gray-800 brand-text-animation">
+              <span className="pink-gradient-text">Edu</span><span className="text-gray-800">Sphere</span>
+            </span>
           </Link>
         </div>
 
         {/* Login Card */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
+        <div className="card animate-bounce-in">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-slate-800 mb-2">Welcome to EduSphere</h1>
-            <p className="text-slate-600">Sign in with your Google account to continue your learning journey</p>
-          </div>
+              <h1 className="text-2xl font-bold text-gray-800 mb-2">Welcome to EduSphere</h1>
+              <p className="text-gray-600">Sign in with your Google account to continue your learning journey</p>
+            </div>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-600">{error}</p>
+            <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-lg">
+              <p className="text-sm text-rose-600">{error}</p>
             </div>
           )}
 
           <button 
             onClick={handleGoogleSignIn}
             disabled={loading}
-            className="w-full bg-white text-slate-700 py-3 px-4 rounded-lg font-semibold border border-slate-300 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-white text-gray-700 py-3 px-4 rounded-xl font-semibold border-2 border-blossom-200 hover:border-blossom-300 hover:bg-blossom-50 focus:outline-none focus:ring-2 focus:ring-blossom-500/20 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
           >
             <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_17_40)">
@@ -76,13 +78,13 @@ export default function LoginPage() {
           </button>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-gray-500">
               By signing in, you agree to our{" "}
-              <Link href="#" className="text-blue-600 hover:text-blue-700">
+              <Link href="#" className="text-blossom-600 hover:text-blossom-700">
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link href="#" className="text-blue-600 hover:text-blue-700">
+              <Link href="#" className="text-blossom-600 hover:text-blossom-700">
                 Privacy Policy
               </Link>
             </p>

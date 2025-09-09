@@ -170,16 +170,16 @@ export default function DashboardPage() {
   const handleSyllabusUploaded = () => setRefresh((r) => r + 1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-blossom-50 to-pink-50">
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm sticky top-0 z-40">
+      <header className="bg-white/90 backdrop-blur border-b border-blossom-200 shadow-sm sticky top-0 z-40">
         <div className="flex items-center justify-between px-8 py-4">
           <div className="flex items-center space-x-2">
-            <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center logo-animation shadow-md">
+            <div className="w-9 h-9 bg-gradient-to-r from-blossom-500 to-rose-500 rounded-lg flex items-center justify-center logo-animation pink-glow">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
             <span className="text-2xl font-extrabold brand-text-animation tracking-tight">
-              <span className="text-blue-600">Edu</span><span className="text-slate-900">Sphere</span>
+              <span className="pink-gradient-text">Edu</span><span className="text-gray-800">Sphere</span>
             </span>
           </div>
 
@@ -187,23 +187,27 @@ export default function DashboardPage() {
             <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-slate-100 transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 rounded-xl hover:bg-blossom-50 transition-all duration-300"
               >
-                <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center shadow">
+                <div className="w-9 h-9 bg-gradient-to-r from-blossom-500 to-rose-500 rounded-full flex items-center justify-center shadow-md">
                   <span className="text-white text-base font-bold">{initials}</span>
                 </div>
-                <span className="text-slate-800 font-semibold">{displayName}</span>
-                <ChevronDown className="h-4 w-4 text-slate-400" />
+                <span className="text-gray-800 font-semibold">{displayName}</span>
+                <ChevronDown className="h-4 w-4 text-gray-400" />
               </button>
 
               {userMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 py-2">
+                <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-blossom-200 py-2 animate-fade-in">
+                  <div className="px-4 py-3 border-b border-blossom-100">
+                    <p className="text-sm font-semibold text-gray-900">{displayName}</p>
+                    <p className="text-xs text-gray-500">{user?.email}</p>
+                  </div>
                   <button 
                     onClick={handleLogout}
-                    className="flex items-center space-x-2 px-4 py-2 text-slate-700 hover:bg-blue-50 w-full text-left font-semibold"
+                    className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-blossom-50 transition-all duration-200 flex items-center"
                   >
-                    <LogOut className="h-4 w-4" />
-                    <span>Logout</span>
+                    <LogOut className="w-4 h-4 inline mr-2" />
+                    Sign Out
                   </button>
                 </div>
               )}
@@ -243,31 +247,51 @@ export default function DashboardPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-10">
+        <main className="max-w-7xl mx-auto px-8 py-12">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-8">
-              <h1 className="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Welcome back, {displayName}!</h1>
-              <p className="text-slate-600 text-lg">Ready to continue your learning journey?</p>
+            <div className="mb-12">
+              <h1 className="text-4xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+                Welcome back, {displayName}!
+              </h1>
+              <p className="text-xl text-gray-600 animate-fade-in animation-delay-100">
+                Let's continue your learning journey
+              </p>
             </div>
 
             <div className="space-y-8">
               {/* Syllabus Upload Section */}
-              <div>
+              <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 animate-fade-in animation-delay-200 border border-blossom-100">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blossom-500 to-rose-500 rounded-lg flex items-center justify-center shadow-md">
+                    <Upload className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900">Upload Your Syllabus</h2>
+                    <p className="text-gray-600">Share your syllabus to get started with personalized learning</p>
+                  </div>
+                </div>
                 <SyllabusUploader onSyllabusUploaded={handleSyllabusUploaded} />
               </div>
 
               {/* Chapter Breakdown */}
               {selectedBreakdown ? (
-                <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-md">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h2 className="text-xl font-bold text-slate-900">
-                        {selectedBreakdown.title || "Syllabus"}
-                      </h2>
-                      <p className="text-sm text-slate-500">
-                        {selectedBreakdown.createdAt?.toDate?.().toLocaleString?.() || ""}
-                      </p>
+                <div className="bg-white rounded-2xl shadow-lg p-8 animate-fade-in animation-delay-300 border border-blossom-100">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blossom-500 to-rose-500 rounded-lg flex items-center justify-center shadow-md">
+                      <BookOpen className="w-6 h-6 text-white" />
                     </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-900">Chapter Breakdown</h2>
+                      <p className="text-gray-600">Explore your syllabus chapter by chapter</p>
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {selectedBreakdown.title || "Syllabus"}
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      {selectedBreakdown.createdAt?.toDate?.().toLocaleString?.() || ""}
+                    </p>
                   </div>
                   <ChapterBreakdown 
                     chapters={selectedBreakdown.breakdown} 
